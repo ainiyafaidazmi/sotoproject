@@ -4,99 +4,391 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>SoTo | Sopran alTo</title>
 
   <style>
+    /* PENGATURAN DASAR */
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff5fa;
-      color: #58394d;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #FFFDF8;
+      color: #49343B;
+      line-height: 1.7;
     }
 
-    header {
-      background: #edb6d1;
-      padding: 25px;
-      text-align: center;
-    }
-
+    /* NAVIGASI */
     nav {
-      background: #fff;
-      padding: 15px;
-      text-align: center;
+      background-color: #FFFDF8;
+      padding: 15px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(90, 55, 65, 0.10);
     }
 
-    nav a {
-      color: #9a4776;
-      text-decoration: none;
-      margin: 0 12px;
+    .brand {
+      color: #B96E83;
+      font-size: 25px;
       font-weight: bold;
+      letter-spacing: 2px;
     }
 
-    section {
-      padding: 35px 20px;
+    .menu {
+      display: flex;
+      gap: 25px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #49343B;
+      font-size: 14px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: #C88B38;
+    }
+
+    /* BERANDA */
+    #beranda {
+      min-height: 85vh;
+      padding: 55px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      background: linear-gradient(
+        145deg,
+        #F8E4E5,
+        #FFF8F1,
+        #F3E8C7
+      );
     }
 
-    .kartu {
-      background: white;
-      padding: 22px;
-      margin: 15px auto;
-      max-width: 500px;
-      border-radius: 15px;
+    .eyebrow {
+      color: #A46B79;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
 
+    .hero-title {
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 7vw, 66px);
+      color: #583842;
+      line-height: 1.2;
+      margin: 8px 0;
+    }
+
+    .subtitle {
+      max-width: 600px;
+      font-size: 16px;
+      color: #76545C;
+      margin: 10px auto;
+    }
+
+    .logo {
+      width: 260px;
+      max-width: 75vw;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 22px auto 5px;
+      mix-blend-mode: multiply;
+    }
+
+    .tagline {
+      color: #A46B79;
+      font-family: Georgia, serif;
+      font-size: 19px;
+      font-style: italic;
+      margin: 5px 0 0;
+    }
+
+    .scroll-note {
+      margin-top: 30px;
+      color: #967782;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* BAGIAN KONTEN */
+    .content-section {
+      padding: 65px 20px;
+      text-align: center;
+      scroll-margin-top: 75px;
+    }
+
+    .section-label {
+      color: #C28B43;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      color: #583842;
+      margin: 5px 0 12px;
+    }
+
+    .description {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #765F65;
+    }
+
+    /* KARTU FILOSOFI */
+    .philosophy-card {
+      background: #FFFFFF;
+      max-width: 800px;
+      margin: 28px auto 0;
+      padding: 32px;
+      border: 1px solid #F0D9DB;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(90, 55, 65, 0.06);
+      text-align: left;
+    }
+
+    .philosophy-card h3 {
+      color: #B96E83;
+      margin-top: 0;
+      font-family: Georgia, serif;
+      font-size: 23px;
+    }
+
+    .philosophy-card p {
+      margin-bottom: 0;
+    }
+
+    /* TOMBOL CANVA */
+    .canva-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 13px 28px;
+      border-radius: 30px;
+      background-color: #B96E83;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .canva-button:hover {
+      background-color: #925366;
+      transform: translateY(-2px);
+    }
+
+    /* PRODUK */
+    #produk {
+      background-color: #F9EFF0;
+    }
+
+    .coming-soon {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 20px;
+      border: 1px solid #D9B6A0;
+      border-radius: 30px;
+      color: #916B59;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    /* FOOTER */
     footer {
-      background: #edb6d1;
-      padding: 18px;
+      padding: 25px 15px;
       text-align: center;
+      background-color: #49343B;
+      color: #FFF8F1;
+      font-size: 12px;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    /* TAMPILAN HP DAN IPAD */
+    @media (max-width: 600px) {
+      nav {
+        padding: 13px 15px;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .brand {
+        font-size: 23px;
+      }
+
+      .menu {
+        width: 100%;
+        justify-content: center;
+        gap: 22px;
+      }
+
+      .menu a {
+        font-size: 13px;
+      }
+
+      #beranda {
+        min-height: 75vh;
+        padding: 45px 18px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+
+      .logo {
+        width: 230px;
+      }
+
+      .content-section {
+        padding: 48px 18px;
+      }
+
+      .section-title {
+        font-size: 29px;
+      }
+
+      .philosophy-card {
+        padding: 22px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to SoTo</h1>
-    <p>Sopran alTo — Salam hangat, SoTo!</p>
-  </header>
 
+  <!-- NAVIGASI UTAMA -->
   <nav>
-    <a href="#beranda">Beranda</a>
-    <a href="#desain">Desain</a>
-    <a href="#produk">Produk</a>
+    <div class="brand">SoTo ♡</div>
+
+    <div class="menu">
+      <a href="#beranda">Beranda</a>
+      <a href="#desain">Desain</a>
+      <a href="#produk">Produk</a>
+    </div>
   </nav>
 
+  <!-- HALAMAN BERANDA -->
   <section id="beranda">
-    <h2>Beranda</h2>
-    <div class="kartu">
-      <h3>Selamat Datang di Website SoTo</h3>
-      <p>Tempat kreativitas, harmoni, dan kebersamaan bertemu.</p>
-    </div>
+
+    <p class="eyebrow">Sopran alTo</p>
+
+    <h1 class="hero-title">Welcome to SoTo</h1>
+
+    <p class="subtitle">
+      A place where creativity, harmony, and
+      togetherness meet.
+    </p>
+
+    <!-- LOGO SOTO -->
+    <img
+      class="logo"
+      src="logo-soto.jpeg"
+      alt="Logo SoTo dengan kunci pink dan not musik"
+    >
+
+    <p class="tagline">
+      "Salam hangat, SoTo"
+    </p>
+
+    <p class="scroll-note">
+      CREATIVITY • HARMONY • TOGETHERNESS
+    </p>
+
   </section>
 
-  <section id="desain">
-    <h2>Desain</h2>
-    <div class="kartu">
-      <h3>Filosofi Logo SoTo</h3>
+  <!-- DESAIN DAN FILOSOFI LOGO -->
+  <section id="desain" class="content-section">
+
+    <p class="section-label">Behind the Design</p>
+
+    <h2 class="section-title">Our Logo Philosophy</h2>
+
+    <p class="description">
+      Every detail tells a story.
+      Discover the meaning behind our identity.
+    </p>
+
+    <div class="philosophy-card">
+
+      <h3>The Meaning Behind SoTo</h3>
+
       <p>
-        Kunci merah muda melambangkan peluang dan misteri.
-        Pita dan bentuk hati mencerminkan kehangatan,
-        kepedulian, dan empati. Not musik melambangkan
-        harmoni, irama, dan kreativitas.
+        Logo SoTo menggambarkan kreativitas,
+        kehangatan, dan harmoni. Kunci berwarna
+        pink melambangkan pembuka peluang dan
+        misteri. Bentuk hati pada bagian atas
+        kunci serta pita yang lembut mencerminkan
+        kehangatan, kepedulian, dan empati.
+        Sementara itu, not-not musik yang
+        transparan melambangkan harmoni, irama,
+        fleksibilitas, kemampuan beradaptasi,
+        dan keterbukaan dalam berkarya bersama.
       </p>
+
     </div>
+
+    <a
+      <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAHYc-imf7c/1_Wd52Lq3LgMIM-mDf82UA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAHYc-imf7c&#x2F;1_Wd52Lq3LgMIM-mDf82UA&#x2F;view?utm_content=DAHYc-imf7c&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">SoTo (Sopran Alto) Project!</a> by Ainiya Faida Azmi
+    >
+      Explore Our Team ↗
+    </a>
+
+    <p style="font-size: 12px; color: #967782;">
+      Klik tombol untuk membuka Canva.
+    </p>
+
   </section>
 
-  <section id="produk">
-    <h2>Produk</h2>
-    <div class="kartu">
-      <h3>Produk SoTo</h3>
-      <p>Informasi produk dan karya tim kami akan hadir di sini.</p>
-    </div>
+  <!-- PRODUK -->
+  <section id="produk" class="content-section">
+
+    <p class="section-label">Our Creations</p>
+
+    <h2 class="section-title">Our Products</h2>
+
+    <p class="description">
+      This is where our ideas turn into creations.
+      Stay tuned for more!
+    </p>
+
+    <span class="coming-soon">
+      COMING SOON ♡
+    </span>
+
   </section>
 
+  <!-- PENUTUP -->
   <footer>
-    <p>© 2026 SoTo — Made with creativity and harmony.</p>
+    <p>© 2026 SoTo — Sopran alTo</p>
+    <p>Made with creativity, harmony, and warmth.</p>
   </footer>
+
 </body>
 </html>
